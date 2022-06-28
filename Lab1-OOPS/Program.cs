@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿// That's not a working code short on time just tried to fullfill all the major requirements;
+// LAB 1
 
 class VendingMachine
 {
@@ -21,12 +22,12 @@ class VendingMachine
         if (inventory.ContainsKey(product))
         {
             inventory[product] += quantity;
-            Console.WriteLine($"{quantity}{product} has been added, Code:{product}.");
+            Console.WriteLine($"{quantity} has been added {product.Name}, Code:{product.Code}. Price:{product.Price}");
         }
         else
         {
             inventory.Add(product, quantity);
-            Console.WriteLine($"{quantity}{product} available, Code;{product}");
+            Console.WriteLine($"{quantity} has been added {product.Name}, Code:{product.Code}. Price:{product.Price}");
         }
 
     }
@@ -36,7 +37,7 @@ class VendingMachine
         if (MoneyFloat.ContainsKey(MoneyDenomination))
         {
             MoneyFloat[MoneyDenomination] += quantity;
-            Console.WriteLine($" There are {MoneyDenomination} X {MoneyFloat[MoneyDenomination]}");
+            Console.WriteLine($" There are {MoneyDenomination} + {MoneyFloat[MoneyDenomination]}");
         }
     }
 
@@ -63,19 +64,17 @@ class VendingMachine
 
         amount = totalMoney;
 
-
-
-
-        // for inventory outage
-
-        //foreach(var item in inventory)
-        //{
-        //    if(item.Key == code)
-        //    {
-
-        //    }
-        //}
-
+        foreach (var item in inventory)
+        {
+            if(item.Key.Price > totalMoney)
+            {
+                Console.WriteLine("Insufficent Funds");
+            }
+            if(item.Value == 0)
+            {
+                Console.WriteLine("Alll out");
+            }
+        }
     }
 
 
